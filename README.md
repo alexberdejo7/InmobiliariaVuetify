@@ -1,6 +1,6 @@
 # inmobiliariavue
 
-This template should help get you started developing with Vue 3 in Vite.
+Proyecto tipo inmobiliaria con Vuetify
 
 ## Recommended IDE Setup
 
