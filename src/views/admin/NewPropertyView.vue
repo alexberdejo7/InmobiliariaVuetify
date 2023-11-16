@@ -4,8 +4,11 @@ import { validationSchema, imageSchema } from '../../validation/propertySchema'
 import {collection, addDoc} from 'firebase/firestore'
 import {useFirestore} from 'vuefire'
 import { useRouter } from 'vue-router'
+import useImage from '../../composables/useImage'
 
 const items = [1,2,3,4]
+
+const {url, uploadImage, image} = useImage()
 const db = useFirestore()
 const router = useRouter()
 
@@ -33,7 +36,8 @@ const submit = handleSubmit(async (values) => {
   const {imagen, ...propiedad} = values
   
   const docRef = await addDoc(collection(db, "propiedades"), {
-    ...propiedad
+    ...propiedad,
+    imagen: url.value
   });
     if(docRef.id) {
         router.push({name: 'admin-propiedades'})
@@ -74,7 +78,16 @@ const submit = handleSubmit(async (values) => {
             class="mb-3"
             v-model="imagen.value.value"
             :error-messages="imagen.errorMessage.value"
+            @change="uploadImage"
           />
+
+          <div v-if="image">
+            <p class="font-weight-bold"> Imagen de Propiedad: </p>
+            <img class="w-50" :src="image" >
+
+          </div>
+
+
 
           <v-text-field
             
