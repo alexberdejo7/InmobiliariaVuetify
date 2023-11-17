@@ -1,4 +1,9 @@
 <script setup>
+import usePropiedades from '../../composables/usePropiedades';
+
+const {propertyCollection, priceProperty} = usePropiedades()
+
+
 
 </script>
 
@@ -12,8 +17,48 @@
     :to="{name: 'nueva-propiedad'}">
     
       Nueva Propiedad
-
   </v-btn>
+
+  <V-card
+    class="mx-auto mt-10" 
+    flat>
+    <v-list>
+      <v-list-item
+        v-for="property in propertyCollection"
+        :key="property.id"
+      >
+          <template v-slot:prepend>
+              <v-list-item-media :start="true">
+                <img width="220" :src="property.imagen" />
+              </v-list-item-media>
+          </template>
+
+          <v-list-item-title> 
+            {{ property.titulo }}
+          </v-list-item-title>
+          <v-list-item-title> 
+            {{ priceProperty(property.precio) }}
+          </v-list-item-title>
+        
+          <template v-slot:append>
+              <v-btn
+                color="indigo-darken-2"
+                class="mr-2 ">
+                Editar
+              </v-btn>
+
+              <v-btn
+                color="red">
+                Eliminar
+              </v-btn>
+
+          </template>
+
+      </v-list-item>
+      
+    </v-list>
+
+  </V-card>
 
 
 </template>

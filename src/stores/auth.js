@@ -29,8 +29,6 @@ export const useAuthStore = defineStore('auth', () => {
     })
 
 
-
-
     const login = ({email, password}) => {
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
