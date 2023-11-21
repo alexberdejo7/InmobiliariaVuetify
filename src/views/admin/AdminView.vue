@@ -43,6 +43,7 @@ const {propertyCollection, priceProperty} = usePropiedades()
           <template v-slot:append>
               <v-btn
                 color="indigo-darken-2"
+                :to="{name: 'editar-propiedad', params: {id: property.id}}"
                 class="mr-2 ">
                 Editar
               </v-btn>
