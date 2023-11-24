@@ -1,7 +1,9 @@
 <script setup>
 import usePropiedades from '../../composables/usePropiedades';
+import {priceProperty} from '../../helpers/index'
 
-const {propertyCollection, priceProperty} = usePropiedades()
+
+const {propertyCollection} = usePropiedades()
 
 
 
