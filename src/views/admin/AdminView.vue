@@ -3,7 +3,7 @@ import usePropiedades from '../../composables/usePropiedades';
 import {priceProperty} from '../../helpers/index'
 
 
-const {propertyCollection} = usePropiedades()
+const {propertyCollection, deleteItem} = usePropiedades()
 
 
 
@@ -51,7 +51,10 @@ const {propertyCollection} = usePropiedades()
               </v-btn>
 
               <v-btn
-                color="red">
+                color="red"
+                flat
+                @click="deleteItem(property.id, property.imagen)"
+                >
                 Eliminar
               </v-btn>
 

@@ -4,7 +4,7 @@ import Property from '../components/Property.vue';
 import {priceProperty} from '../helpers/index'
 
 
-const {alberca, propertyFilter} = usePropiedades()
+const {alberca, filteredItems} = usePropiedades()
 
 
 </script>
@@ -23,7 +23,7 @@ const {alberca, propertyFilter} = usePropiedades()
 
         <v-row>
             <Property
-                v-for="property in propertyFilter" 
+                v-for="property in filteredItems" 
                 :key="property.id"
                 :property="property"
                 :price="priceProperty"
